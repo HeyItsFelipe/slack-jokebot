@@ -12,13 +12,12 @@ let ONLY_ONE_JOKE = 1;
 
 // Start Handler
 bot.on('start', () => {
-    const params = {
-        icon_emoji: ":smiley:"
-    }
     // bot.postMessageToChannel('bot', 'Get ready for some giggles!', params);
 });
 
-var task = cron.schedule('0 0 12 * * *', () => {
+// To run one task every minute, use '* * * * *'.
+// To run task at 12pm every day, use '0 0 12 * * *'.
+var task = cron.schedule('* * * * *', () => {
     console.log('>>>Execute Task...');
     ONLY_ONE_JOKE = 1;
     fetchJoke();
@@ -41,11 +40,16 @@ function fetchJoke() {
             .then(res => {
                 let setup = res.data.setup;
                 let punchline = res.data.punchline;
-                const params = {
-                    icon_emoji: ":laughing:"
-                }
 
-                bot.postMessageToChannel('bot', `${setup}\n${punchline}`, params);
+                bot.postMessageToChannel('bot', `${setup}`, (res) => {
+                    console.log(res);
+
+                    // This replies to the tread.
+                    // Reference: https://api.slack.com/messaging/sending#threading
+                    // Reference: https://api.slack.com/methods/chat.postMessage/test
+                    axios.get('https://slack.com/api/chat.postMessage?token=' + process.env.SLACKBOT_TOKEN + '&channel=bot&text=' + punchline + '&thread_ts=' + res.ts + '&pretty=1')
+                        .then(res => console.log(res.data)).catch(err => console.log(err));
+                });
             });
     }
 }
