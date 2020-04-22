@@ -2,6 +2,12 @@ require('dotenv').config();
 const SlackBot = require('slackbots');
 const axios = require('axios');
 const cron = require('node-cron');
+const express = require('express')
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Jokebot says hello!')
+});
 
 let bot = new SlackBot({
     token: process.env.SLACKBOT_TOKEN,
