@@ -9,14 +9,13 @@ This code is using [Slackbots.js]('https://github.com/mishk0/slack-bot-api) whic
 - **Lead Developer**: [Felipe Fernandez](https://github.com/HeyItsFelipe)
 
 ## Latest Deployment
-
+The latest deployment can be viewed here: [https://quiet-castle-41146.herokuapp.com/](https://quiet-castle-41146.herokuapp.com/)
 
 ## Prerequisites
 Knowledge in the following technologies will be helpful:<br />
 - Node
 - Axios
 - SlackBots.js
-- Node Cron
 
 ## Setup
 Read Important section above.
@@ -32,3 +31,5 @@ Type `npm install` to install dependencies.
 Navigate to the cloned repo using your terminal if not done so already.<br />
 Type `npm run start` to run the app.<br />
 
+## Schedule
+On deployment on Heroku, Heroku Scheduler was used to run this app once every 24 hours.  It also gets triggered when you visit deployed link (see link in Latest Deployment).

@@ -1,7 +1,6 @@
 require('dotenv').config();
 const SlackBot = require('slackbots');
 const axios = require('axios');
-const cron = require('node-cron');
 const express = require('express')
 const app = express();
 
@@ -25,20 +24,9 @@ bot.on('start', () => {
     // bot.postMessageToChannel('bot', 'Get ready for some giggles!', params);
 });
 
-// To run one task every minute, use '* * * * *'.
-// To run task at 12pm every day, use '0 0 12 * * *'.
-// var task = cron.schedule('0 0 10 * * *', () => {
-//     console.log('>>>Execute Task...');
-//     ONLY_ONE_JOKE = 1;
-//     fetchJoke();
-// }, {
-//     scheduled: true,
-// });
-
 // Error Handler
 bot.on('error', (error) => {
     console.log(error);
-    // task.destroy();
 });
 
 // Respond to data
