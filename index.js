@@ -39,7 +39,7 @@ function fetchJoke() {
                 let setup = res.data.setup;
                 let punchline = res.data.punchline;
 
-                bot.postMessageToChannel('bot', `${setup}`, (res) => {
+                bot.postMessageToChannel('random', `${setup}`, (res) => {
                     console.log(res);
 
                     // This replies to the tread.
