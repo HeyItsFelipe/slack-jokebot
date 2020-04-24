@@ -45,7 +45,7 @@ function fetchJoke() {
                     // This replies to the tread.
                     // Reference: https://api.slack.com/messaging/sending#threading
                     // Reference: https://api.slack.com/methods/chat.postMessage/test
-                    axios.get('https://slack.com/api/chat.postMessage?token=' + process.env.SLACKBOT_TOKEN + '&channel=bot&text=' + punchline + '&thread_ts=' + res.ts + '&pretty=1')
+                    axios.get('https://slack.com/api/chat.postMessage?token=' + process.env.SLACKBOT_TOKEN + '&channel=random&text=' + punchline + '&thread_ts=' + res.ts + '&pretty=1')
                         .then(res => console.log(res.data)).catch(err => console.log(err));
                 });
             });
